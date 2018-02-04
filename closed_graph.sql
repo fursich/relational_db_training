@@ -1,51 +1,10 @@
--- ******************
--- （データ例）
--- ******************
--- drop table if exists nodes;
--- create table nodes (
---   node varchar(10) primary key
--- );
--- drop table if exists edges;
--- create table edges (
---   start_node varchar(10),
---   end_node varchar(10),
---   weight int
--- );
 
 -- ******************
--- 閉グラフ例
--- ******************
--- insert into nodes values
---   ('a'), ('b'), ('c'), ('d'), ('z');
---
--- insert into edges values
---   ('a', 'b', 3), ('b', 'a', 3),
---   ('b', 'c', 2), ('c', 'b', 2),
---   ('c', 'a', 5), ('a', 'c', 5),
---   ('a', 'd', 1), ('d', 'a', 1),
---   ('d', 'b', 7), ('b', 'd', 7);
-
--- ******************
--- 開グラフ例
--- ******************
--- insert into nodes values
---   ('a'), ('b'), ('c'), ('d');
---
--- insert into edges values
---   ('a', 'b', 3), ('b', 'a', 3),
---   ('b', 'c', 1), ('c', 'b', 1),
---   ('a', 'd', 4), ('d', 'a', 4);
-
--- ******************
--- 呼び出し
--- ******************
--- call find_loop();
-
--- ******************
--- プロシージャ
+-- 子プロシージャ
 -- 始点sを固定した時、sの連結成分上に
 -- 閉路があるかどうかを判定する
 -- ******************
+
 drop procedure if exists find_loop_from;
 delimiter //
 create procedure find_loop_from(IN s varchar(10), OUT is_loop boolean)
